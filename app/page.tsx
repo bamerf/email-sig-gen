@@ -1,60 +1,61 @@
-import Image from 'next/image';
-import { useState } from 'react';
+'use client';
 
-const FIELDS = {
-  fullName: '',
-  email: '',
-  pronouns: '',
-  role: '',
-  phoneNumber: '',
-  mobileNumber: '',
-  bookingLink: '',
-  company: '',
-  companyWebsite: '',
-  logoUrl: '',
-  footer: '',
-  fontStack: '',
-  primaryColor: '',
-  twitter: '',
-};
+import EmailSignature from '@/components/EmailSignature';
+import ReactEmail from '@/components/ReactEmail';
+import { useEffect, useState } from 'react';
+import { render } from '@react-email/render';
+
+const html = render(<ReactEmail />);
+
+console.log('html', html);
+
+const FIELDS = [
+  'fullName',
+  'role',
+  'company',
+  'companyWebsite',
+  'companyAddress',
+  'email',
+  'pronouns',
+  'phoneNumber',
+  'mobileNumber',
+  'bookingLink',
+  'logoUrl',
+  'footer',
+  'fontStack',
+  'primaryColor',
+  'twitter',
+] as const;
 
 export default function Home() {
-  const [formData, setFormData] = useState(FIELDS);
-
+  const [formData, setFormData] = useState(
+    FIELDS.reduce((a, v) => ({ ...a, [v]: undefined }), {})
+  );
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const signatureHTML = `
-      <img alt="${formData.company}" src="${formData.logoUrl}" width="32" height="32" style="width: 32px; height: 32px;">
-      <div style="orphans: 2; widows: 2; font-size: 12px;" dir="auto"><br></div>
-      <div style="orphans: 2; widows: 2;" dir="auto"><span style="font-family: ${formData.fontStack};"><b style="color: ${formData.primaryColor}">${formData.fullName}</b><font color="#808080" style="font-size: 14px"> (${formData.pronouns})</font></span></div>
-      <!-- Rest of the HTML, replacing placeholders with form data... -->
-    `;
-
-    // Do something with signatureHTML
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      {Object.keys(FIELDS).map((field) => (
-        <input
-          key={field}
-          type="text"
-          name={field}
-          placeholder="Full Name"
-          value={formData[field as keyof typeof formData]}
-          onChange={handleChange}
-        />
-      ))}
-      {/* Repeat for the rest of the form fields */}
-      <button type="submit">Generate Signature</button>
-    </form>
+    <div className="flex">
+      <div className="flex flex-col gap-4">
+        {Object.keys(formData).map((field) => (
+          <div key={field} className="flex flex-col gap-2">
+            <label htmlFor="field">{field}</label>
+            <input
+              type="text"
+              name={field}
+              placeholder={field}
+              value={formData[field as keyof typeof formData]}
+              onChange={handleChange}
+            />
+          </div>
+        ))}
+      </div>
+      <div>
+        <ReactEmail {...formData} />
+      </div>
+      {/* <EmailSignature {...formData} /> */}
+    </div>
   );
-  return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24"></main>
-  );
+  return <div></div>;
 }
