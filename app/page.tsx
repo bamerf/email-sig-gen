@@ -1,61 +1,37 @@
 'use client';
 
-import EmailSignature from '@/components/EmailSignature';
 import ReactEmail from '@/components/ReactEmail';
-import { useEffect, useState } from 'react';
 import { render } from '@react-email/render';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {
+  docco,
+  atelierHeathDark,
+} from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import FieldsSection from '@/components/FieldsSection';
 
 const html = render(<ReactEmail />);
 
 console.log('html', html);
 
-const FIELDS = [
-  'fullName',
-  'role',
-  'company',
-  'companyWebsite',
-  'companyAddress',
-  'email',
-  'pronouns',
-  'phoneNumber',
-  'mobileNumber',
-  'bookingLink',
-  'logoUrl',
-  'footer',
-  'fontStack',
-  'primaryColor',
-  'twitter',
-] as const;
-
 export default function Home() {
-  const [formData, setFormData] = useState(
-    FIELDS.reduce((a, v) => ({ ...a, [v]: undefined }), {})
-  );
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
-
   return (
-    <div className="flex">
-      <div className="flex flex-col gap-4">
-        {Object.keys(formData).map((field) => (
-          <div key={field} className="flex flex-col gap-2">
-            <label htmlFor="field">{field}</label>
-            <input
-              type="text"
-              name={field}
-              placeholder={field}
-              value={formData[field as keyof typeof formData]}
-              onChange={handleChange}
-            />
-          </div>
-        ))}
+    <div className="flex h-full gap-4">
+      <FieldsSection />
+      <div className="flex flex-col w-full h-full gap-4">
+        <div className="relative flex p-4 overflow-auto bg-black rounded h-1/2">
+          <SyntaxHighlighter
+            style={atelierHeathDark}
+            language="html"
+            wrapLongLines
+          >
+            {`${html}`}
+          </SyntaxHighlighter>
+        </div>
       </div>
-      <div>
-        <ReactEmail {...formData} />
-      </div>
-      {/* <EmailSignature {...formData} /> */}
+      <div>{/* <ReactEmail {...formData} /> */}</div>
     </div>
   );
-  return <div></div>;
 }
