@@ -13,15 +13,15 @@ interface EmailSignatureProps {
   role?: string;
   company?: string;
   companyWebsite?: string;
+  companyAddress?: string;
   email: string;
-  pronouns?: string;
   phoneNumber?: string;
   mobileNumber?: string;
   bookingLink?: string;
   footer?: string;
   fontStack?: string;
   primaryColor?: string;
-  twitter?: string;
+  yourWebsite?: string;
 }
 
 const ReactEmail: FC<EmailSignatureProps> = ({
@@ -31,15 +31,14 @@ const ReactEmail: FC<EmailSignatureProps> = ({
   company = 'Corellium',
   companyWebsite = 'https://example.com',
   companyAddress = 'Delray Beach, FL',
-  email,
-  pronouns,
-  phoneNumber,
-  mobileNumber,
-  bookingLink,
-  footer,
+  phoneNumber = '+12345',
+  mobileNumber = '+12345',
+  bookingLink = 'https://example.com',
+  email = 'test@gmal.com',
+  yourWebsite = 'https://linkedin/test',
+  footer = 'CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.',
   fontStack,
   primaryColor,
-  twitter,
 }) => {
   return (
     <Tailwind
@@ -85,6 +84,43 @@ const ReactEmail: FC<EmailSignatureProps> = ({
       {companyAddress && (
         <Text className="m-0 text-black">{companyAddress}</Text>
       )}
+      {(phoneNumber || mobileNumber) && (
+        <Text className="m-0 text-black">
+          {phoneNumber && (
+            <Link className="text-black underline" href={`tel:${phoneNumber}`}>
+              P: {phoneNumber}
+            </Link>
+          )}{' '}
+          &bull;{' '}
+          {mobileNumber && (
+            <Link className="text-black underline" href={`tel:${mobileNumber}`}>
+              M: {mobileNumber}
+            </Link>
+          )}
+        </Text>
+      )}
+      {(bookingLink || email || yourWebsite) && (
+        <Text className="m-0 text-black">
+          {bookingLink && (
+            <Link className="text-black underline" href={bookingLink}>
+              Book a meeting
+            </Link>
+          )}{' '}
+          &bull;{' '}
+          {email && (
+            <Link className="text-black underline" href={`mailto:${email}`}>
+              {email}
+            </Link>
+          )}{' '}
+          &bull;{' '}
+          {yourWebsite && (
+            <Link className="text-black underline" href={yourWebsite}>
+              LinkedIn
+            </Link>
+          )}
+        </Text>
+      )}
+      <Text>{footer}</Text>
     </Tailwind>
   );
 };
