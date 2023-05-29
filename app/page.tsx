@@ -12,7 +12,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import FieldsSection from '@/components/FieldsSection';
 
-const html = render(<ReactEmail />);
+const html = render(<ReactEmail />).replace(/<!DOCTYPE[^>]*>/i, '');
 
 console.log('html', html);
 
@@ -30,8 +30,10 @@ export default function Home() {
             {`${html}`}
           </SyntaxHighlighter>
         </div>
+        <div className="p-4 bg-white border rounded h-1/2 border-neutral-200">
+          <ReactEmail />
+        </div>
       </div>
-      <div>{/* <ReactEmail {...formData} /> */}</div>
     </div>
   );
 }
