@@ -16,7 +16,6 @@ import { DATA } from '@/constants/data';
 
 export default function Home() {
   const [data, setData] = useState(DATA);
-  console.log('Home ~ data:', data);
 
   const html = render(<ReactEmail {...data} />).replace(/<!DOCTYPE[^>]*>/i, '');
 
@@ -24,14 +23,15 @@ export default function Home() {
     <div className="flex h-full gap-4">
       <FieldsSection data={data} setData={setData} />
       <div className="flex flex-col w-full h-full gap-4">
-        <div className="relative flex p-4 overflow-auto bg-black rounded h-1/2">
-          <SyntaxHighlighter
+        <div className="relative flex p-4 overflow-auto text-sm text-white border rounded bg-stone-950 border-stone-700 h-1/2">
+          {`${html}`}
+          {/* <SyntaxHighlighter
             style={atelierHeathDark}
             language="html"
             wrapLongLines
           >
-            {`${html}`}
-          </SyntaxHighlighter>
+            
+          </SyntaxHighlighter> */}
         </div>
         <div className="p-6 bg-white border rounded h-1/2 border-neutral-200">
           <ReactEmail {...data} />
