@@ -49,7 +49,7 @@ const ReactEmail: FC<typeof DATA> = (data) => {
       <Heading as="h4" className="mb-1 font-bold text-black">
         {fullName.data}
       </Heading>
-      <Heading className="m-0 text-black">
+      <Heading as="h4" className="m-0 text-black">
         {role.data} &bull;{' '}
         {companyWebsite.data ? (
           <Link
@@ -67,10 +67,12 @@ const ReactEmail: FC<typeof DATA> = (data) => {
         )}
       </Heading>{' '}
       {companyAddress.data && (
-        <Heading className="m-0 text-black">{companyAddress.data}</Heading>
+        <Heading as="h4" className="m-0 text-black">
+          {companyAddress.data}
+        </Heading>
       )}
       {(phoneNumber.data || mobileNumber.data) && (
-        <Heading className="m-0 text-black">
+        <Heading as="h4" className="m-0 text-black">
           {phoneNumber.data && (
             <Link
               className="text-black underline"
@@ -91,7 +93,7 @@ const ReactEmail: FC<typeof DATA> = (data) => {
         </Heading>
       )}
       {(bookingLink.data || email.data || otherLinks.data) && (
-        <Heading className="m-0 text-black">
+        <Heading as="h4" className="m-0 text-black">
           {bookingLink.data && (
             <Link className="text-black underline" href={bookingLink.data}>
               Book a meeting
@@ -109,12 +111,14 @@ const ReactEmail: FC<typeof DATA> = (data) => {
           &bull;{' '}
           {otherLinks.data && (
             <Link className="text-black underline" href={otherLinks.data}>
-              LinkedIn
+              Website
             </Link>
           )}
         </Heading>
       )}
-      <Text className="text-xs text-stone-400">{footer.data}</Text>
+      <Text className="text-[0.675rem] leading-4 text-stone-400">
+        {footer.data}
+      </Text>
     </Tailwind>
   );
 };
