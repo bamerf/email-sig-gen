@@ -47,13 +47,12 @@ export const DATA = {
   logoUrl: {
     label: 'Logo URL',
     placeholder: 'https://example.com/logo.png',
-    data: '/public/profile-pic-256.png',
-    // data: 'https://source.unsplash.com/random',
+    data: 'https://bamerf.com/images/profile-pic-256.png',
   },
   footer: {
     label: 'Footer',
     placeholder: 'Start typing your footer here...',
-    data: 'CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.',
+    data: "PRIVACY ALERT — This message and its attachments are for the intended recipient's use only. It may contain confidential data. If you're not the recipient, don't disclose, copy, or act on its contents. If received in error, notify the sender and delete the message. Thank you.",
   },
   fontStack: {
     label: 'Font Stack',
