@@ -9,7 +9,9 @@ type FieldsSectionProps = {
 };
 
 const FieldsSection: FC<FieldsSectionProps> = ({ data, setData }) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setData({
       ...data,
       [event.target.name]: {

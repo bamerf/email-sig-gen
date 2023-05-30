@@ -12,7 +12,9 @@ const Field = ({
   label: string;
   placeholder: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }) => {
   const id = useId();
 
@@ -27,6 +29,8 @@ const Field = ({
       {name === 'footer' ? (
         <textarea
           id={id}
+          name={name}
+          onChange={onChange}
           className={clsx(
             'flex w-full text-stone-200 h-20 px-3 py-2 text-sm bg-transparent border rounded-md border-stone-700 placeholder:text-stone-200 focus:outline-none  disabled:cursor-not-allowed disabled:opacity-50 ',
             {
