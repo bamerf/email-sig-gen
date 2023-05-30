@@ -1,27 +1,27 @@
-import { useState } from 'react';
 import clsx from 'clsx';
-
-import { DATA } from '@/constants/data';
 import Field from '@/components/Field';
+import type { DATA } from '@/constants/data';
+import type { FC } from 'react';
 
-const FieldsSection = () => {
-  const [formData, setFormData] = useState(DATA);
+type FieldsSectionProps = {
+  data: typeof DATA;
+  setData: React.Dispatch<typeof DATA>;
+};
 
+const FieldsSection: FC<FieldsSectionProps> = ({ data, setData }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('handleChange ~ event:', event.target.value);
-
-    setFormData({
-      ...formData,
+    setData({
+      ...data,
       [event.target.name]: {
-        ...formData[event.target.name as keyof typeof formData],
+        ...data[event.target.name as keyof typeof data],
         data: event.target.value,
       },
     });
   };
   return (
-    <main className="grid h-full w-full max-w-[520px] shrink-0 gap-8 self-start overflow-y-auto rounded border border-neutral-200 bg-white p-6">
+    <main className="grid h-full w-full max-w-[520px] shrink-0 gap-8 self-start overflow-y-auto rounded border border-stone-700 bg-stone-900 p-6">
       <div>
-        <h1 className="mb-2 text-3xl font-semibold text-gray-900">
+        <h1 className="mb-2 text-3xl font-semibold text-stone-200">
           Email Signature Generator
         </h1>
         <p className="m-0 font-normal text-gray-500 text-md">
@@ -29,13 +29,13 @@ const FieldsSection = () => {
         </p>
       </div>
       <div className="grid gap-6">
-        {Object.keys(formData).map((field, index) => (
+        {Object.keys(data).map((field, index) => (
           <Field
             key={field + index}
             name={field}
-            label={formData[field as keyof typeof formData].label}
-            placeholder={formData[field as keyof typeof formData].placeholder}
-            value={formData[field as keyof typeof formData].data}
+            label={data[field as keyof typeof data].label}
+            placeholder={data[field as keyof typeof data].placeholder}
+            value={data[field as keyof typeof data].data}
             onChange={handleChange}
           />
         ))}

@@ -4,42 +4,27 @@ import { Img } from '@react-email/img';
 import { Tailwind } from '@react-email/tailwind';
 import { Text } from '@react-email/text';
 import { Heading } from '@react-email/heading';
-import { Html } from '@react-email/html';
 import { Link } from '@react-email/link';
+import { DATA } from '@/constants/data';
 
-interface EmailSignatureProps {
-  logoUrl?: string;
-  fullName: string;
-  role?: string;
-  company?: string;
-  companyWebsite?: string;
-  companyAddress?: string;
-  email: string;
-  phoneNumber?: string;
-  mobileNumber?: string;
-  bookingLink?: string;
-  footer?: string;
-  fontStack?: string;
-  primaryColor?: string;
-  yourWebsite?: string;
-}
+const ReactEmail: FC<typeof DATA> = (data) => {
+  const {
+    logoUrl,
+    fullName,
+    role,
+    company,
+    companyWebsite,
+    companyAddress,
+    phoneNumber,
+    mobileNumber,
+    bookingLink,
+    email,
+    otherLinks,
+    footer,
+    fontStack,
+    primaryColor,
+  } = data;
 
-const ReactEmail: FC<EmailSignatureProps> = ({
-  logoUrl = 'https://source.unsplash.com/random',
-  fullName = 'Bamdad Erfanian',
-  role = 'Senior Frontend Engineer',
-  company = 'Corellium',
-  companyWebsite = 'https://example.com',
-  companyAddress = 'Delray Beach, FL',
-  phoneNumber = '+12345',
-  mobileNumber = '+12345',
-  bookingLink = 'https://example.com',
-  email = 'test@gmal.com',
-  yourWebsite = 'https://linkedin/test',
-  footer = 'CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.',
-  fontStack,
-  primaryColor,
-}) => {
   return (
     <Tailwind
       config={{
@@ -54,73 +39,82 @@ const ReactEmail: FC<EmailSignatureProps> = ({
     >
       {logoUrl && (
         <Img
-          className="w-8 h-8"
-          src={logoUrl}
+          className="w-8 h-8 mb-4 rounded-full"
+          src={logoUrl.data}
           alt="logo"
           width="32"
           height="32"
         />
       )}
-      <Heading as="h4" className="text-black">
-        {fullName}
+      <Heading as="h4" className="mb-1 font-bold text-black">
+        {fullName.data}
       </Heading>
-      <Text className="m-0 text-black">
-        {role} &bull;{' '}
-        {companyWebsite ? (
+      <Heading className="m-0 text-black">
+        {role.data} &bull;{' '}
+        {companyWebsite.data ? (
           <Link
             className={clsx('text-brand', {
               underline: true,
-              'text-brand': primaryColor,
-              'text-black': !primaryColor,
+              'text-brand': primaryColor.data,
+              'text-black': !primaryColor.data,
             })}
-            href={companyWebsite}
+            href={companyWebsite.data}
           >
-            {company}
+            {company.data}
           </Link>
         ) : (
-          company
+          company.data
         )}
-      </Text>{' '}
-      {companyAddress && (
-        <Text className="m-0 text-black">{companyAddress}</Text>
+      </Heading>{' '}
+      {companyAddress.data && (
+        <Heading className="m-0 text-black">{companyAddress.data}</Heading>
       )}
-      {(phoneNumber || mobileNumber) && (
-        <Text className="m-0 text-black">
-          {phoneNumber && (
-            <Link className="text-black underline" href={`tel:${phoneNumber}`}>
-              P: {phoneNumber}
+      {(phoneNumber.data || mobileNumber.data) && (
+        <Heading className="m-0 text-black">
+          {phoneNumber.data && (
+            <Link
+              className="text-black underline"
+              href={`tel:${phoneNumber.data}`}
+            >
+              P: {phoneNumber.data}
             </Link>
           )}{' '}
           &bull;{' '}
-          {mobileNumber && (
-            <Link className="text-black underline" href={`tel:${mobileNumber}`}>
-              M: {mobileNumber}
+          {mobileNumber.data && (
+            <Link
+              className="text-black underline"
+              href={`tel:${mobileNumber.data}`}
+            >
+              M: {mobileNumber.data}
             </Link>
           )}
-        </Text>
+        </Heading>
       )}
-      {(bookingLink || email || yourWebsite) && (
-        <Text className="m-0 text-black">
-          {bookingLink && (
-            <Link className="text-black underline" href={bookingLink}>
+      {(bookingLink.data || email.data || otherLinks.data) && (
+        <Heading className="m-0 text-black">
+          {bookingLink.data && (
+            <Link className="text-black underline" href={bookingLink.data}>
               Book a meeting
             </Link>
           )}{' '}
           &bull;{' '}
-          {email && (
-            <Link className="text-black underline" href={`mailto:${email}`}>
-              {email}
+          {email.data && (
+            <Link
+              className="text-black underline"
+              href={`mailto:${email.data}`}
+            >
+              {email.data}
             </Link>
           )}{' '}
           &bull;{' '}
-          {yourWebsite && (
-            <Link className="text-black underline" href={yourWebsite}>
+          {otherLinks.data && (
+            <Link className="text-black underline" href={otherLinks.data}>
               LinkedIn
             </Link>
           )}
-        </Text>
+        </Heading>
       )}
-      <Text>{footer}</Text>
+      <Text className="text-xs text-stone-400">{footer.data}</Text>
     </Tailwind>
   );
 };

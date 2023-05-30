@@ -47,7 +47,8 @@ export const DATA = {
   logoUrl: {
     label: 'Logo URL',
     placeholder: 'https://example.com/logo.png',
-    data: 'https://source.unsplash.com/random',
+    data: '/public/profile-pic-256.png',
+    // data: 'https://source.unsplash.com/random',
   },
   footer: {
     label: 'Footer',

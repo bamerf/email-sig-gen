@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import ReactEmail from '@/components/ReactEmail';
 import { render } from '@react-email/render';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -11,15 +12,17 @@ import {
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import FieldsSection from '@/components/FieldsSection';
-
-const html = render(<ReactEmail />).replace(/<!DOCTYPE[^>]*>/i, '');
-
-console.log('html', html);
+import { DATA } from '@/constants/data';
 
 export default function Home() {
+  const [data, setData] = useState(DATA);
+  console.log('Home ~ data:', data);
+
+  const html = render(<ReactEmail {...data} />).replace(/<!DOCTYPE[^>]*>/i, '');
+
   return (
     <div className="flex h-full gap-4">
-      <FieldsSection />
+      <FieldsSection data={data} setData={setData} />
       <div className="flex flex-col w-full h-full gap-4">
         <div className="relative flex p-4 overflow-auto bg-black rounded h-1/2">
           <SyntaxHighlighter
@@ -30,8 +33,8 @@ export default function Home() {
             {`${html}`}
           </SyntaxHighlighter>
         </div>
-        <div className="p-4 bg-white border rounded h-1/2 border-neutral-200">
-          <ReactEmail />
+        <div className="p-6 bg-white border rounded h-1/2 border-neutral-200">
+          <ReactEmail {...data} />
         </div>
       </div>
     </div>
