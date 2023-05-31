@@ -31,6 +31,7 @@ const Field = ({
           id={id}
           name={name}
           onChange={onChange}
+          value={value}
           className={clsx(
             'flex w-full text-stone-200 h-20 px-3 py-2 text-sm bg-transparent border rounded-md border-stone-700 placeholder:text-stone-500 focus:outline-none  disabled:cursor-not-allowed disabled:opacity-50 ',
             {
@@ -38,9 +39,7 @@ const Field = ({
                 false,
             }
           )}
-        >
-          {value}
-        </textarea>
+        />
       ) : (
         <input
           id={id}

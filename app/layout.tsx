@@ -16,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(inter.className, 'h-screen bg-stone-900 p-4')}>
+      <body
+        suppressHydrationWarning={true}
+        className={clsx(inter.className, 'h-screen bg-stone-900 p-4')}
+      >
         {children}
       </body>
     </html>
