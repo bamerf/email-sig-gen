@@ -47,7 +47,7 @@ const FieldsSection: FC<FieldsSectionProps> = ({ data, setData }) => {
           'dark:text-gray-400': false,
         })}
       >
-        Test in Gmail, Outlook and Spark
+        Tested in Gmail, Outlook and Spark
       </p>
     </main>
   );
