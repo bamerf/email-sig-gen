@@ -22,15 +22,17 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
     otherLinks,
     footer,
     fontStack,
-    primaryColor,
+    primaryColor = { data: '#000000' },
   } = data;
+
+  const fontStyles = { fontFamily: fontStack.data };
 
   return (
     <>
       {logoUrl && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          alt="Acme, Inc."
+          alt="logo"
           src={logoUrl.data}
           width="32"
           height="32"
@@ -50,18 +52,8 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
         }}
         dir="auto"
       >
-        <span
-          style={{
-            fontFamily: fontStack.data,
-          }}
-        >
-          <b
-            style={{
-              color: '#000000',
-            }}
-          >
-            {fullName.data}
-          </b>
+        <span style={fontStyles}>
+          <b>{fullName.data}</b>
         </span>
       </div>
 
@@ -74,16 +66,12 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
         }}
         dir="auto"
       >
-        <span
-          style={{
-            fontFamily: fontStack.data,
-          }}
-        >
-          <span style={{ color: '#000000' }}>
+        <span style={fontStyles}>
+          <span>
             {role.data} &bull;
             {companyWebsite.data ? (
               <a
-                style={{ color: '#000000' }}
+                style={{ color: primaryColor.data }}
                 href={companyWebsite.data}
                 target="_blank"
                 referrerPolicy="no-referrer"
@@ -99,6 +87,120 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
           </span>
         </span>
       </div>
+
+      {companyAddress.data && (
+        <div style={{ orphans: 2, widows: 2 }} dir="auto">
+          <span
+            style={{
+              fontFamily: fontStack.data,
+            }}
+          >
+            {companyAddress.data}
+          </span>
+        </div>
+      )}
+
+      {(phoneNumber.data || mobileNumber.data) && (
+        <div style={{ orphans: 2, widows: 2 }} dir="auto">
+          <span>
+            {phoneNumber.data && (
+              <span style={fontStyles}>
+                P:{' '}
+                <a
+                  style={{
+                    textDecoration: 'underline',
+                  }}
+                  href={`tel:${phoneNumber.data}`}
+                >
+                  {phoneNumber.data}
+                </a>
+              </span>
+            )}
+            {phoneNumber.data && mobileNumber.data && (
+              <span style={fontStyles}> &bull; </span>
+            )}
+            {mobileNumber.data && (
+              <span style={fontStyles}>
+                M:{' '}
+                <a
+                  style={{
+                    textDecoration: 'underline',
+                  }}
+                  href={`tel:${mobileNumber.data}`}
+                >
+                  {mobileNumber.data}
+                </a>
+              </span>
+            )}
+          </span>
+        </div>
+      )}
+
+      {(bookingLink.data || email.data || otherLinks.data) && (
+        <div style={{ orphans: 2, widows: 2 }} dir="auto">
+          <span>
+            {bookingLink.data && (
+              <span style={fontStyles}>
+                <a
+                  target="_blank"
+                  referrerPolicy="no-referrer"
+                  href={bookingLink.data}
+                  style={{
+                    textDecoration: 'underline',
+                    color: primaryColor.data,
+                  }}
+                >
+                  Book a Call
+                </a>
+              </span>
+            )}
+            {bookingLink.data && email.data && (
+              <span style={fontStyles}> &bull; </span>
+            )}
+            {email.data && (
+              <span style={fontStyles}>
+                <a
+                  target="_blank"
+                  referrerPolicy="no-referrer"
+                  href={`mailto:${email.data}`}
+                  style={{
+                    textDecoration: 'underline',
+                  }}
+                >
+                  {email.data}
+                </a>
+              </span>
+            )}
+            {(email.data || bookingLink.data) && otherLinks.data && (
+              <span style={fontStyles}> &bull; </span>
+            )}
+            {otherLinks.data && (
+              <span style={fontStyles}>
+                <a
+                  target="_blank"
+                  referrerPolicy="no-referrer"
+                  href={otherLinks.data}
+                  style={{
+                    textDecoration: 'underline',
+                  }}
+                >
+                  Website
+                </a>
+              </span>
+            )}
+          </span>
+        </div>
+      )}
+
+      <Break fontSize="6px" />
+
+      {footer.data && (
+        <div style={{ orphans: 2, widows: 2, lineHeight: 1.1 }} dir="auto">
+          <span style={{ ...fontStyles, fontSize: '10px', color: '#808080' }}>
+            {footer.data}
+          </span>
+        </div>
+      )}
     </>
   );
 };
