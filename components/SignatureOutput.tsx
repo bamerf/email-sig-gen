@@ -23,7 +23,7 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
 
   return (
     <>
-      {logoUrl && (
+      {logoUrl.data && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           alt="logo"
