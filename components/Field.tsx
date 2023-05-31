@@ -32,7 +32,7 @@ const Field = ({
           name={name}
           onChange={onChange}
           className={clsx(
-            'flex w-full text-stone-200 h-20 px-3 py-2 text-sm bg-transparent border rounded-md border-stone-700 placeholder:text-stone-200 focus:outline-none  disabled:cursor-not-allowed disabled:opacity-50 ',
+            'flex w-full text-stone-200 h-20 px-3 py-2 text-sm bg-transparent border rounded-md border-stone-700 placeholder:text-stone-500 focus:outline-none  disabled:cursor-not-allowed disabled:opacity-50 ',
             {
               'dark:border-neutral-700 dark:text-neutral-50 dark:focus:ring-neutral-400 dark:focus:ring-offset-neutral-900':
                 false,
@@ -45,7 +45,7 @@ const Field = ({
         <input
           id={id}
           className={clsx(
-            'flex w-full text-stone-200 h-10 px-3 py-2 text-sm bg-transparent border rounded-md border-stone-700 placeholder:text-stone-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+            'flex w-full text-stone-200 h-10 px-3 py-2 text-sm bg-transparent border rounded-md border-stone-700 placeholder:text-stone-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
             {
               'dark:border-neutral-700 dark:text-neutral-50 dark:focus:ring-neutral-400 dark:focus:ring-offset-neutral-900':
                 false,

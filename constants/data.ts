@@ -47,7 +47,7 @@ export const DATA = {
   logoUrl: {
     label: 'Logo URL',
     placeholder: 'https://example.com/logo.png',
-    data: 'https://bamerf.com/images/profile-pic-256.png',
+    data: 'https://bamerf.com/images/profile-pic-256-cropped.png',
   },
   footer: {
     label: 'Footer',
