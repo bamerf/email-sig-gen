@@ -1,10 +1,4 @@
 import type { FC } from 'react';
-import clsx from 'clsx';
-import { Img } from '@react-email/img';
-import { Tailwind } from '@react-email/tailwind';
-import { Text } from '@react-email/text';
-import { Heading } from '@react-email/heading';
-import { Link } from '@react-email/link';
 import { DATA } from '@/constants/data';
 
 const SignatureOutput: FC<typeof DATA> = (data) => {
@@ -52,7 +46,7 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
         }}
         dir="auto"
       >
-        <span style={fontStyles}>
+        <span style={{ ...fontStyles, fontSize: 16 }}>
           <b>{fullName.data}</b>
         </span>
       </div>
@@ -109,6 +103,7 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
                 <a
                   style={{
                     textDecoration: 'underline',
+                    color: '#000000',
                   }}
                   href={`tel:${phoneNumber.data}`}
                 >
@@ -125,6 +120,7 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
                 <a
                   style={{
                     textDecoration: 'underline',
+                    color: '#000000',
                   }}
                   href={`tel:${mobileNumber.data}`}
                 >
@@ -165,6 +161,7 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
                   href={`mailto:${email.data}`}
                   style={{
                     textDecoration: 'underline',
+                    color: '#000000',
                   }}
                 >
                   {email.data}
@@ -182,6 +179,7 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
                   href={otherLinks.data}
                   style={{
                     textDecoration: 'underline',
+                    color: '#000000',
                   }}
                 >
                   Website

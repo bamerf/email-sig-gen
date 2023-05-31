@@ -24,11 +24,6 @@ export const DATA = {
     placeholder: '123 Main St, City, State, Zip',
     data: 'Delray Beach, FL',
   },
-  email: {
-    label: 'Email',
-    placeholder: 'me@company.com',
-    data: 'bam@corellium.com',
-  },
   phoneNumber: {
     label: 'Phone Number',
     placeholder: '+1 234 567 890',
@@ -43,6 +38,16 @@ export const DATA = {
     label: 'Booking Link',
     placeholder: 'https://example.com/booking',
     data: 'https://example.com/booking',
+  },
+  email: {
+    label: 'Email',
+    placeholder: 'me@company.com',
+    data: 'bam@corellium.com',
+  },
+  otherLinks: {
+    label: 'Other Links',
+    placeholder: 'https://linkedin.com/your-profile',
+    data: 'https://bamerf.com',
   },
   logoUrl: {
     label: 'Logo URL',
@@ -64,10 +69,5 @@ export const DATA = {
     label: 'Primary Color',
     placeholder: '#000000',
     data: '#000000',
-  },
-  otherLinks: {
-    label: 'Other Links',
-    placeholder: 'https://linkedin.com/your-profile',
-    data: 'https://bamerf.com',
   },
 };
