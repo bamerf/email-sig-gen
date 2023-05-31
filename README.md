@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
-## 👉 [Link to website](#)  
+## 👉 [Link to website](https://signature.bamerf.com/)  
 
 ---
 
@@ -32,11 +32,11 @@ This tool allows you to easily create professional and personalized email signat
 
 ## Installation
 
-This app doesn't require any installation, it's a web-based app. Just visit the [website](#) to get started!
+This app doesn't require any installation, it's a web-based app. Just visit the [website](https://signature.bamerf.com/) to get started!
 
 ## Usage
 
-1. Visit our [website](#).
+1. Visit the [website](https://signature.bamerf.com/).
 2. Fill in your personal information.
 3. Add your company logo or personal avatar.
 4. Customize the colors and font.
@@ -49,4 +49,4 @@ If you have suggestions for improving the app or adding new features, please ope
 
 ## License
 
-This project is licensed under the [MIT License](#).
+This project is licensed under the MIT License.
