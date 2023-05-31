@@ -62,7 +62,10 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
       >
         <span style={fontStyles}>
           <span>
-            {role.data} &bull;
+            {role.data}
+
+            {role.data && company.data && <span> &bull;</span>}
+
             {companyWebsite.data ? (
               <a
                 style={{ color: primaryColor.data }}
