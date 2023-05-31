@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Email Sig-gen
 
-## Getting Started
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
-First, run the development server:
+## 👉 [Link to website](#)  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Table of Contents
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Email Sig-gen](#email-sig-gen)
+  - [👉 Link to website  ](#-link-to-website-)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contribution](#contribution)
+  - [License](#license)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Introduction
 
-## Learn More
+This tool allows you to easily create professional and personalized email signatures with your given inputs. With a design inspired by Beskar Labs's Hancock signature app, this tool provides a user-friendly interface and a range of customization options.
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Personal Information**: Add your name, title, company, and contact details.
+- **Company Logo**: Upload your company logo or personal avatar.
+- **Custom Colors**: Choose custom colors to match your brand or preference.
+- **Preview**: Preview your signature before finalizing it.
+- **Copy to Clipboard**: Easily copy your finished signature and paste it into your email client.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Installation
 
-## Deploy on Vercel
+This app doesn't require any installation, it's a web-based app. Just visit the [website](#) to get started!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Visit our [website](#).
+2. Fill in your personal information.
+3. Add your company logo or personal avatar.
+4. Customize the colors and font.
+5. Preview your signature.
+6. Copy the generated signature and paste it into your email client.
+
+## Contribution
+
+If you have suggestions for improving the app or adding new features, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](#).
