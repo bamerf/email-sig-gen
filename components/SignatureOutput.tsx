@@ -13,13 +13,57 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
     mobileNumber,
     bookingLink,
     email,
-    otherLinks,
+    website,
+    linkedin,
     footer,
     fontStack,
     primaryColor = { data: '#000000' },
   } = data;
 
   const fontStyles = { fontFamily: fontStack.data };
+
+  const links = [
+    bookingLink.data ? (
+      <a
+        target="_blank"
+        referrerPolicy="no-referrer"
+        href={bookingLink.data}
+        style={{ textDecoration: 'underline', color: primaryColor.data }}
+      >
+        Book a Call
+      </a>
+    ) : null,
+    email.data ? (
+      <a
+        target="_blank"
+        referrerPolicy="no-referrer"
+        href={`mailto:${email.data}`}
+        style={{ textDecoration: 'underline', color: '#000000' }}
+      >
+        {email.data}
+      </a>
+    ) : null,
+    website.data ? (
+      <a
+        target="_blank"
+        referrerPolicy="no-referrer"
+        href={website.data}
+        style={{ textDecoration: 'underline', color: '#000000' }}
+      >
+        Website
+      </a>
+    ) : null,
+    linkedin.data ? (
+      <a
+        target="_blank"
+        referrerPolicy="no-referrer"
+        href={linkedin.data}
+        style={{ textDecoration: 'underline', color: '#000000' }}
+      >
+        LinkedIn
+      </a>
+    ) : null,
+  ].filter(Boolean);
 
   return (
     <>
@@ -135,63 +179,16 @@ const SignatureOutput: FC<typeof DATA> = (data) => {
         </div>
       )}
 
-      {(bookingLink.data || email.data || otherLinks.data) && (
-        <div style={{ orphans: 2, widows: 2 }} dir="auto">
-          <span>
-            {bookingLink.data && (
-              <span style={fontStyles}>
-                <a
-                  target="_blank"
-                  referrerPolicy="no-referrer"
-                  href={bookingLink.data}
-                  style={{
-                    textDecoration: 'underline',
-                    color: primaryColor.data,
-                  }}
-                >
-                  Book a Call
-                </a>
-              </span>
-            )}
-            {bookingLink.data && email.data && (
-              <span style={fontStyles}> &bull; </span>
-            )}
-            {email.data && (
-              <span style={fontStyles}>
-                <a
-                  target="_blank"
-                  referrerPolicy="no-referrer"
-                  href={`mailto:${email.data}`}
-                  style={{
-                    textDecoration: 'underline',
-                    color: '#000000',
-                  }}
-                >
-                  {email.data}
-                </a>
-              </span>
-            )}
-            {(email.data || bookingLink.data) && otherLinks.data && (
-              <span style={fontStyles}> &bull; </span>
-            )}
-            {otherLinks.data && (
-              <span style={fontStyles}>
-                <a
-                  target="_blank"
-                  referrerPolicy="no-referrer"
-                  href={otherLinks.data}
-                  style={{
-                    textDecoration: 'underline',
-                    color: '#000000',
-                  }}
-                >
-                  Website
-                </a>
-              </span>
-            )}
-          </span>
-        </div>
-      )}
+      <div style={{ orphans: 2, widows: 2 }} dir="auto">
+        <span style={fontStyles}>
+          {links.map((link, index) => (
+            <span key={index}>
+              {link}
+              {index < links.length - 1 && <span> &bull; </span>}
+            </span>
+          ))}
+        </span>
+      </div>
 
       <Break fontSize="6px" />
 

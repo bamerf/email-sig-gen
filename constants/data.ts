@@ -44,10 +44,15 @@ export const DATA = {
     placeholder: 'me@company.com',
     data: 'bam@corellium.com',
   },
-  otherLinks: {
-    label: 'Other Links',
-    placeholder: 'https://linkedin.com/your-profile',
+  website: {
+    label: 'Website',
+    placeholder: 'https://mywebsite.com',
     data: 'https://bamerf.com',
+  },
+  linkedin: {
+    label: 'LinkedIn',
+    placeholder: 'https://linkedin.com/your-profile',
+    data: 'https://www.linkedin.com/in/bamdad-erfanian',
   },
   logoUrl: {
     label: 'Logo URL',
